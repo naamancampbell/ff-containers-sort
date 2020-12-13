@@ -28,7 +28,7 @@ from shutil import copyfile
 ## Author: Naaman Campbell
 ##         12 December 2020
 ##
-## Version: 1.3.5 | 2020-12-13 - NC | Tested on Windows / manual sort option
+## Version: 1.3.6 | 2020-12-13 - NC | Tested on Windows / manual sort option
 ##          1.2.1 | 2020-12-12 - NC | Tested on Mac / OS + Python detection
 ##          1.1.1 | 2020-12-12 - NC | Tested on Linux
 ##

@@ -28,8 +28,8 @@ ff-containers-sort [--no-sort] [--manual]
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/naamancampbell/ff-containers-sort/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/naamancampbell/ff-containers-sort/blob/main/CHANGELOG.md)
 
 ## License
 
-See [LICENSE](https://github.com/naamancampbell/ff-containers-sort/blob/master/LICENSE)
+See [LICENSE](https://github.com/naamancampbell/ff-containers-sort/blob/main/LICENSE)

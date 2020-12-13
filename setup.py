@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="ff-containers-sort",
-    version="1.3.5",
+    version="1.3.6",
     author="Naaman Campbell",
     author_email="naaman@clancampbell.id.au",
     description="Sorts and re-numbers Firefox Containers config objects in Firefox containers.json",

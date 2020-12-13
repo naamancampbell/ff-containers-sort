@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.6
+------------------
+* README update - 'master' -> 'main'
+
 1.3.5
 ------------------
 * README update
