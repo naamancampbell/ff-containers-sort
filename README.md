@@ -2,6 +2,10 @@
 
 [![PyPi Package](https://img.shields.io/pypi/v/ff-containers-sort.svg)](https://pypi.org/project/ff-containers-sort/)
 
+```bash
+pip install ff-containers-sort
+```
+
 ## Requirements
 
 * Python 3.6+
