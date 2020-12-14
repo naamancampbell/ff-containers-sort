@@ -28,9 +28,8 @@ from shutil import copyfile
 ## Author: Naaman Campbell
 ##         12 December 2020
 ##
-## Version: 1.3.6 | 2020-12-13 - NC | Tested on Windows / manual sort option
-##          1.2.1 | 2020-12-12 - NC | Tested on Mac / OS + Python detection
-##          1.1.1 | 2020-12-12 - NC | Tested on Linux
+## Version: 1.4.1 | 2020-12-14 - NC | Support multiple Firefox profiles
+##          See CHANGELOG.md for full details
 ##
 ## Sources:
 ##  - Python version detection  - https://bit.ly/2Wbr9U0
@@ -40,24 +39,7 @@ from shutil import copyfile
 ###############################################################################
 
 
-def sort_containers(sort, manual):
-    # default Firefox profile paths
-    user = getpass.getuser()
-    ff_paths = {
-        'Linux': f'/home/{user}/.mozilla/firefox',
-        'Windows': f'C:/Users/{user}/AppData/Roaming/Mozilla/Firefox/Profiles',
-        'Darwin': f'/Users/{user}/Library/Application Support/Firefox/Profiles',
-    }
-
-    try:
-        platform_name = platform.system()
-        ff_dir = ff_paths[platform_name]
-    except IndexError:
-        sys.exit(f'Unsupported platform: {platform_name}')
-
-    # locate config file
-    conf_glob = os.path.join(ff_dir, '**', 'containers.json')
-    conf_filename = glob(conf_glob, recursive=True)[0]
+def sort_containers(conf_filename, sort, manual):
     conf_dir = os.path.dirname(conf_filename)
 
     # backup config
@@ -152,6 +134,48 @@ def sort_containers(sort, manual):
     print(conf_filename)
 
 
+def locate_config(sort, manual):
+    # default Firefox profile paths
+    user = getpass.getuser()
+    ff_paths = {
+        'Linux': f'/home/{user}/.mozilla/firefox',
+        'Windows': f'C:/Users/{user}/AppData/Roaming/Mozilla/Firefox/Profiles',
+        'Darwin': f'/Users/{user}/Library/Application Support/Firefox/Profiles',
+    }
+
+    try:
+        platform_name = platform.system()
+        ff_dir = ff_paths[platform_name]
+    except KeyError:
+        sys.exit(f'Unsupported platform: {platform_name}')
+
+    # locate config file
+    conf_glob = os.path.join(ff_dir, '**', 'containers.json')
+    conf_filenames = glob(conf_glob, recursive=True)
+
+    if len(conf_filenames) > 1:
+        print('\nMultiple Firefox profiles found:\n')
+        for file_num, filename in enumerate(conf_filenames, start=1):
+            conf_dir = os.path.dirname(filename)
+            conf_dirname = os.path.basename(conf_dir)
+            print(f'{file_num}) {conf_dirname}')
+        profile = input(
+            '\nEnter profile number to sort Containers\n'
+            + '(or enter A to sort all profiles): '
+        )
+        print('')
+        if profile == 'A':
+            for conf_filename in conf_filenames:
+                sort_containers(conf_filename, sort, manual)
+        elif profile.isnumeric() and int(profile) <= len(conf_filenames):
+            sort_containers(conf_filenames[int(profile) - 1], sort, manual)
+        else:
+            sys.exit('\nERROR: Unsupported option')
+    else:
+        # single profile
+        sort_containers(conf_filenames[0], sort, manual)
+
+
 def main():
     command_description = '''
         Sorts and re-numbers Firefox Containers config objects in the
@@ -181,8 +205,8 @@ def main():
     sort = argresults.sort
     manual = argresults.manual
 
-    sort_containers(sort, manual)
+    locate_config(sort, manual)
 
 
-if __name__ == ' __main__':
+if __name__ == '__main__':
     main()
