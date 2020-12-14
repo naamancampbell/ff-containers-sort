@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.4.1
+------------------
+* Support multiple Firefox profiles
+
 1.3.6
 ------------------
 * README update - 'master' -> 'main'

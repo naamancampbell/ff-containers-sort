@@ -19,6 +19,7 @@ pip install ff-containers-sort
 * alphabetical sorting of containers
 * manual sorting mode
 * safely updates containers.json after manual changes
+* supports multiple Firefox profiles
 * preserves Firefox private container objects
 * creates backups of Firefox Container config prior to making changes
     * deletes backups older than 7 days
