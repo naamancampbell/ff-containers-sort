@@ -28,7 +28,7 @@ from shutil import copyfile
 ## Author: Naaman Campbell
 ##         12 December 2020
 ##
-## Version: 1.4.1 | 2020-12-14 - NC | Support multiple Firefox profiles
+## Version: 1.5.1 | 2020-12-14 - NC | Retains userContextIds
 ##          See CHANGELOG.md for full details
 ##
 ## Sources:
@@ -61,6 +61,7 @@ def sort_containers(conf_filename, sort, manual):
         conf = json.load(conf_file)
 
     public_identities = [i for i in conf['identities'] if i['public']]
+    private_identities = [i for i in conf['identities'] if not i['public']]
 
     if sort:
         # only sort custom identities
@@ -104,26 +105,6 @@ def sort_containers(conf_filename, sort, manual):
 
         # sort public identities
         public_identities = [public_identities[int(i) - 1] for i in new_order]
-
-    # determine reserved ids for private identities
-    private_identities = [i for i in conf['identities'] if not i['public']]
-    reserved_ids = [
-        item['userContextId']
-        for item in private_identities
-        if item['userContextId'] < public_identities_count
-    ]
-
-    # generate list of ids with reserved ids removed
-    public_ids = list(
-        range(1, (public_identities_count + 1) + len(reserved_ids))
-    )
-    for resv_id in reserved_ids:
-        public_ids.remove(resv_id)
-
-    # re-number 'public' Container objects
-    for item in public_identities:
-        public_ids.reverse()
-        item['userContextId'] = public_ids.pop()
 
     conf['identities'] = public_identities + private_identities
 
