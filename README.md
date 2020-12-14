@@ -12,7 +12,7 @@ pip install ff-containers-sort
 
 ## Overview
 
-**ff-containers-sort** sorts and re-numbers Firefox Containers config objects in the Firefox containers.json config file
+* sorts Firefox Containers
 
 ### Features
 

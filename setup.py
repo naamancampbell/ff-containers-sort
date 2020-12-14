@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="ff-containers-sort",
-    version="1.5.1",
+    version="1.5.2",
     author="Naaman Campbell",
     author_email="naaman@clancampbell.id.au",
-    description="Sorts and re-numbers Firefox Containers config objects in Firefox containers.json",
+    description="Sorts Firefox Containers",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/naamancampbell/ff-containers-sort",

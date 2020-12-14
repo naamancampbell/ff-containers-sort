@@ -28,7 +28,7 @@ from shutil import copyfile
 ## Author: Naaman Campbell
 ##         12 December 2020
 ##
-## Version: 1.5.1 | 2020-12-14 - NC | Retains userContextIds
+## Version: 1.5.2 | 2020-12-14 - NC | Retains userContextIds
 ##          See CHANGELOG.md for full details
 ##
 ## Sources:

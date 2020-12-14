@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.5.2
+------------------
+* README update
+
 1.5.1
 ------------------
 * Retains userContextIds
