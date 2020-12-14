@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.5.1
+------------------
+* Retains userContextIds
+
 1.4.1
 ------------------
 * Support multiple Firefox profiles
