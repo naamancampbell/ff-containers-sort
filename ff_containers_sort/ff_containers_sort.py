@@ -120,6 +120,7 @@ def locate_config(sort, manual):
     user = getpass.getuser()
     ff_paths = {
         'Linux': f'/home/{user}/.mozilla/firefox',
+        'FreeBSD': f'/home/{user}/.mozilla/firefox',
         'Windows': f'C:/Users/{user}/AppData/Roaming/Mozilla/Firefox/Profiles',
         'Darwin': f'/Users/{user}/Library/Application Support/Firefox/Profiles',
     }
